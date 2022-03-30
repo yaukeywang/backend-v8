@@ -70,25 +70,25 @@ jobs:
 #         name: v8_bin
 #         path: ~/v8/v8/output/**/*
 
-  build_windows:
-    name: Windows
-    runs-on: windows-2019
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run build script
-      shell: cmd
-      run: |
-        cd %GITHUB_WORKSPACE%
-        call .\windows_64.cmd ${{env.VERSION}}
-    - uses: actions/upload-artifact@v2
-      with:
-        name: v8_bin
-        path: v8/v8/output/**/*
+#   build_windows:
+#     name: Windows
+#     runs-on: windows-2019
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Run build script
+#       shell: cmd
+#       run: |
+#         cd %GITHUB_WORKSPACE%
+#         call .\windows_64.cmd ${{env.VERSION}}
+#     - uses: actions/upload-artifact@v2
+#       with:
+#         name: v8_bin
+#         path: v8/v8/output/**/*
         
-    - uses: actions/upload-artifact@v2
-      with:
-        name: v8_bin_win64
-        path: v8/v8/output/**/*
+#     - uses: actions/upload-artifact@v2
+#       with:
+#         name: v8_bin_win64
+#         path: v8/v8/output/**/*
         
 #   build_windows_md:
 #     name: Windows-MD
@@ -105,23 +105,8 @@ jobs:
 #         name: v8_bin
 #         path: v8/v8/output/**/*
         
-#   build_windows_md_dll:
-#     name: Windows-MD-DLL
-#     runs-on: windows-2019
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: Run build script
-#       shell: cmd
-#       run: |
-#         cd %GITHUB_WORKSPACE%
-#         call .\windows_64MD_DLL.cmd ${{env.VERSION}}
-#     - uses: actions/upload-artifact@v2
-#       with:
-#         name: v8_bin
-#         path: v8/v8/output/**/*
-        
-  build_windows_32:
-    name: Windows-32
+  build_windows_md_dll:
+    name: Windows-MD-DLL
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
@@ -129,11 +114,26 @@ jobs:
       shell: cmd
       run: |
         cd %GITHUB_WORKSPACE%
-        call .\windows_32.cmd ${{env.VERSION}}
+        call .\windows_64MD_DLL.cmd ${{env.VERSION}}
     - uses: actions/upload-artifact@v2
       with:
         name: v8_bin
         path: v8/v8/output/**/*
+        
+#   build_windows_32:
+#     name: Windows-32
+#     runs-on: windows-2019
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Run build script
+#       shell: cmd
+#       run: |
+#         cd %GITHUB_WORKSPACE%
+#         call .\windows_32.cmd ${{env.VERSION}}
+#     - uses: actions/upload-artifact@v2
+#       with:
+#         name: v8_bin
+#         path: v8/v8/output/**/*
           
 #   build_macos:
 #     name: macOS
@@ -201,7 +201,7 @@ jobs:
         
   publish:
     runs-on: ubuntu-latest
-    needs: [build_windows,build_windows_32]
+    needs: [build_windows_md_dll]
     steps:
       - uses: actions/download-artifact@v1
         with:
