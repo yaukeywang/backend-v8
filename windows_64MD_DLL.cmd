@@ -38,9 +38,5 @@ call ninja -C out.gn\x64.release -t clean
 call ninja -C out.gn\x64.release v8
 
 md output\v8\Lib\Win64DLL
-copy /Y out.gn\x64.release\v8.dll.lib output\v8\Lib\Win64DLL\
-copy /Y out.gn\x64.release\v8_libplatform.dll.lib output\v8\Lib\Win64DLL\
-copy /Y out.gn\x64.release\v8.dll output\v8\Lib\Win64DLL\
-copy /Y out.gn\x64.release\v8_libbase.dll output\v8\Lib\Win64DLL\
-copy /Y out.gn\x64.release\v8_libplatform.dll output\v8\Lib\Win64DLL\
-copy /Y out.gn\x64.release\zlib.dll output\v8\Lib\Win64DLL\
+copy /Y out.gn\x64.release\*.lib output\v8\Lib\Win64DLL\
+copy /Y out.gn\x64.release\*.dll output\v8\Lib\Win64DLL\
