@@ -40,3 +40,4 @@ call ninja -C out.gn\x64.release v8
 md output\v8\Lib\Win64DLL
 copy /Y out.gn\x64.release\*.lib output\v8\Lib\Win64DLL\
 copy /Y out.gn\x64.release\*.dll output\v8\Lib\Win64DLL\
+copy /Y out.gn\x64.release\*.dat output\v8\Lib\Win64DLL\
