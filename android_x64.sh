@@ -60,5 +60,6 @@ node $GITHUB_WORKSPACE/genBlobHeader.js "android x64" out.gn/x64.release/snapsho
 
 mkdir -p output/v8/Lib/Android/x64
 cp out.gn/x64.release/obj/libwee8.a output/v8/Lib/Android/x64/
+cp out.gn/x64.release/obj/*icu* output/v8/Lib/Android/x64/
 mkdir -p output/v8/Inc/Blob/Android/x64
 cp SnapshotBlob.h output/v8/Inc/Blob/Android/x64/

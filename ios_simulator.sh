@@ -43,5 +43,6 @@ node $GITHUB_WORKSPACE/genBlobHeader.js "ios x64" out.gn/x64.release/snapshot_bl
 
 mkdir -p output/v8/Lib/iOS/x64
 cp out.gn/x64.release/obj/libwee8.a output/v8/Lib/iOS/x64/
+cp out.gn/x64.release/obj/*icu* output/v8/Lib/iOS/x64/
 mkdir -p output/v8/Inc/Blob/iOS/x64
 cp SnapshotBlob.h output/v8/Inc/Blob/iOS/x64/
